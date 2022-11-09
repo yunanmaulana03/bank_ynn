@@ -1,5 +1,4 @@
 import 'package:bank_ynn/shared/theme.dart';
-import 'package:bank_ynn/ui/pages/sign_in_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_ynn/ui/widgets/button.dart';
@@ -104,7 +103,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       children: [
                         CustomFilledButton(
                           title: 'Get Started',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/sign-up', (route) => false);
+                          },
                         ),
                         SizedBox(
                           height: 20,
@@ -112,7 +114,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         CustomTextButton(
                           title: 'Sign In',
                           onPressed: () {
-                            Navigator.pushNamed(context, '/sign-in');
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/sign-in', (route) => false);
                           },
                         )
                       ],

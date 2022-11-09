@@ -1,10 +1,11 @@
-import 'package:bank_ynn/shared/theme.dart';
-import 'package:bank_ynn/ui/widgets/button.dart';
 import 'package:bank_ynn/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+import '../../shared/theme.dart';
+import '../widgets/button.dart';
+
+class SignUpSetKtpPage extends StatelessWidget {
+  const SignUpSetKtpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           Text(
-            'Sign In &\nGrow Your Finance',
+            'Verify Your\nAccount',
             style: blackTextStyle.copyWith(
               fontSize: 20,
               fontWeight: semiBold,
@@ -47,49 +48,64 @@ class SignInPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // NOTE : EMAIL ADDRESS
-                CustomFormField(
-                  title: 'Email Address',
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: lightBgColor,
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/ic_upload.png',
+                      width: 32,
+                    ),
+                  ),
                 ),
+                // Container(
+                //   width: 120,
+                //   height: 120,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     image: DecorationImage(
+                //       image: AssetImage(
+                //         'assets/img_profile.jpg',
+                //       ),
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 16,
                 ),
-                // NOTE : PASSWORD
-                CustomFormField(
-                  title: 'Password',
-                  obsecureText: true,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password',
-                    style: blueTextStyle,
+                Text(
+                  'Passport/ID Card',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 18,
+                    fontWeight: medium,
                   ),
                 ),
+
                 SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 CustomFilledButton(
-                  title: 'Sign In',
+                  title: 'Continue',
                   onPressed: () {},
                 )
               ],
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 60,
           ),
           CustomTextButton(
-            title: 'Create New Account',
+            title: 'Skip for Now',
             onPressed: () {
-              Navigator.pushNamed(context, '/sign-up');
+              Navigator.pushNamed(context, '/sign-up-success');
             },
-          )
+          ),
         ],
       ),
     );
