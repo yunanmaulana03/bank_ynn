@@ -21,9 +21,7 @@ class CustomFilledButton extends StatelessWidget {
       width: width,
       height: height,
       child: TextButton(
-        onPressed: () {
-          onPressed;
-        },
+        onPressed: onPressed,
         style: TextButton.styleFrom(
           backgroundColor: purpleColor,
           shape: RoundedRectangleBorder(
@@ -57,7 +55,7 @@ class CustomTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       height: height,
       child: TextButton(

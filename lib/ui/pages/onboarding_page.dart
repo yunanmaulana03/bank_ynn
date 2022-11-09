@@ -153,7 +153,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           onPressed: () {
                             carouselController.nextPage();
                           },
-                        )
+                        ),
                       ],
                     )
             ]),

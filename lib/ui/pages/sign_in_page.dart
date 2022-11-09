@@ -18,7 +18,7 @@ class SignInPage extends StatelessWidget {
           Container(
             width: 155,
             height: 50,
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               top: 100,
               bottom: 100,
             ),
