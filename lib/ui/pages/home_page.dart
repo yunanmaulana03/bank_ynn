@@ -446,8 +446,8 @@ class HomePage extends StatelessWidget {
             height: 14,
           ),
           Wrap(
-            spacing: 17,
-            runSpacing: 18,
+            spacing: 30,
+            runSpacing: 20,
             children: [
               HomeTipsItem(
                 imgUrl: 'assets/img_tips1.png',
