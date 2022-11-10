@@ -9,7 +9,7 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBgColor,
+      
       body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 24,
@@ -79,7 +79,7 @@ class SignInPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      '/home-page',
+                      '/home',
                       (route) => false,
                     );
                   },

@@ -10,7 +10,7 @@ class SignUpSetProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBgColor,
+      
       body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 24,

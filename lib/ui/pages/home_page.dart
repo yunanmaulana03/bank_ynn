@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBgColor,
+      
       bottomNavigationBar: BottomAppBar(
         color: whiteColor,
         shape: CircularNotchedRectangle(),
@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
           horizontal: 24,
         ),
         children: [
-          buildProfile(),
+          buildProfile(context),
           buildWalletCard(),
           buildLevel(),
           buildServices(),
@@ -94,8 +94,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildProfile() {
-    return Container(
+  Widget buildProfile(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/profile');
+      },
+      child: Container(
         margin: EdgeInsets.only(
           top: 40,
         ),
@@ -157,7 +161,9 @@ class HomePage extends StatelessWidget {
               ),
             )
           ],
-        ));
+        ),
+      ),
+    );
   }
 
   Widget buildWalletCard() {

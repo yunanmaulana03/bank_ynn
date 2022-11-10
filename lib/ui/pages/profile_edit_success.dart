@@ -2,19 +2,18 @@ import 'package:bank_ynn/shared/theme.dart';
 import 'package:bank_ynn/ui/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-class SignupSuccessPage extends StatelessWidget {
-  const SignupSuccessPage({Key? key}) : super(key: key);
+class ProfileEditSuccess extends StatelessWidget {
+  const ProfileEditSuccess({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Akun Berhasil\nTerdaftar',
+            'Nice Update!',
             style: blackTextStyle.copyWith(
               fontSize: 20,
               fontWeight: semiBold,
@@ -25,7 +24,7 @@ class SignupSuccessPage extends StatelessWidget {
             height: 26,
           ),
           Text(
-            'Grow your finance start\ntogether with us',
+            'Your data is safe with\nour system',
             style: greyTextStyle.copyWith(
               fontSize: 16,
             ),
@@ -36,11 +35,11 @@ class SignupSuccessPage extends StatelessWidget {
           ),
           CustomFilledButton(
             width: 183,
-            title: 'Get Started',
+            title: 'My Profile',
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                '/home',
+                '/profile',
                 (route) => false,
               );
             },

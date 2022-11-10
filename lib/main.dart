@@ -1,5 +1,11 @@
+import 'package:bank_ynn/shared/theme.dart';
 import 'package:bank_ynn/ui/pages/home_page.dart';
 import 'package:bank_ynn/ui/pages/onboarding_page.dart';
+import 'package:bank_ynn/ui/pages/pin_page.dart';
+import 'package:bank_ynn/ui/pages/profile_edit_page.dart';
+import 'package:bank_ynn/ui/pages/profile_edit_pin_page.dart';
+import 'package:bank_ynn/ui/pages/profile_edit_success.dart';
+import 'package:bank_ynn/ui/pages/profile_page.dart';
 import 'package:bank_ynn/ui/pages/sign_in_page.dart';
 import 'package:bank_ynn/ui/pages/sign_up_page.dart';
 import 'package:bank_ynn/ui/pages/sign_up_set_ktp_page.dart';
@@ -17,6 +23,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBgColor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: lightBgColor,
+          elevation: 0,
+          centerTitle: true,
+          iconTheme: IconThemeData(
+            color: blackColor,
+          ),
+          titleTextStyle: blackTextStyle.copyWith(
+            fontSize: 20,
+            fontWeight: semiBold,
+          ),
+        ),
+      ),
       // home: SplashPage(),
       routes: {
         '/': (context) => SplashPage(),
@@ -26,7 +47,12 @@ class MyApp extends StatelessWidget {
         '/sign-up-set-profile': (context) => SignUpSetProfilePage(),
         '/sign-up-set-ktp': (context) => SignUpSetKtpPage(),
         '/sign-up-success': (context) => SignupSuccessPage(),
-        '/home-page': (context) => HomePage(),
+        '/home': (context) => HomePage(),
+        '/profile': (context) => ProfilePage(),
+        '/pin': (context) => PinPage(),
+        '/profile-edit': (context) => ProfileEditPage(),
+        '/profile-edit-pin': (context) => ProfileEditPinPage(),
+        '/profile-edit-success': (context) => ProfileEditSuccess(),
       },
     );
   }

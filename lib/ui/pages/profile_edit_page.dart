@@ -4,40 +4,22 @@ import '../../shared/theme.dart';
 import '../widgets/button.dart';
 import '../widgets/forms.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class ProfileEditPage extends StatelessWidget {
+  const ProfileEditPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text(
+          'Edit Profile',
+        ),
+      ),
       body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 24,
         ),
         children: [
-          Container(
-            width: 155,
-            height: 50,
-            margin: const EdgeInsets.only(
-              top: 100,
-              bottom: 100,
-            ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  'assets/img_logo_light.png',
-                ),
-              ),
-            ),
-          ),
-          Text(
-            'Join Us to Unlock\nYour Growth',
-            style: blackTextStyle.copyWith(
-              fontSize: 20,
-              fontWeight: semiBold,
-            ),
-          ),
           SizedBox(
             height: 30,
           ),
@@ -50,47 +32,41 @@ class SignUpPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // NOTE : FULL NAME
+                CustomFormField(
+                  title: ' Username',
+                ),
+                SizedBox(
+                  height: 16,
+                ),
                 CustomFormField(
                   title: 'Full Name',
                 ),
                 SizedBox(
                   height: 16,
                 ),
-                // NOTE : EMAIL ADDRESS
                 CustomFormField(
                   title: 'Email Address',
                 ),
                 SizedBox(
                   height: 16,
                 ),
-                // NOTE : PASSWORD
                 CustomFormField(
                   title: 'Password',
                   obsecureText: true,
                 ),
-
                 SizedBox(
                   height: 30,
                 ),
                 CustomFilledButton(
-                  title: 'Continue',
+                  title: 'Update Now',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-set-profile');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/profile-edit-success', (route) => false);
                   },
                 )
               ],
             ),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          CustomTextButton(
-            title: 'Sign In',
-            onPressed: () {
-              Navigator.pushNamed(context, '/sign-in');
-            },
-          )
         ],
       ),
     );
