@@ -12,6 +12,9 @@ import 'package:bank_ynn/ui/pages/sign_up_set_ktp_page.dart';
 import 'package:bank_ynn/ui/pages/sign_up_set_profile_page.dart';
 import 'package:bank_ynn/ui/pages/sign_up_success_page.dart';
 import 'package:bank_ynn/ui/pages/splash_page.dart';
+import 'package:bank_ynn/ui/pages/top_up_amount_page.dart';
+import 'package:bank_ynn/ui/pages/top_up_page.dart';
+import 'package:bank_ynn/ui/pages/top_up_success.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -53,6 +56,9 @@ class MyApp extends StatelessWidget {
         '/profile-edit': (context) => ProfileEditPage(),
         '/profile-edit-pin': (context) => ProfileEditPinPage(),
         '/profile-edit-success': (context) => ProfileEditSuccess(),
+        '/top-up': (context) => TopUpPage(),
+        '/top-up-amount': (context) => TopUpAmountPage(),
+        '/top-up-success': (context) => TopUpSuccessPage(),
       },
     );
   }

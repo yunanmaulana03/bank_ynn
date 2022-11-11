@@ -2,8 +2,8 @@ import 'package:bank_ynn/shared/theme.dart';
 import 'package:bank_ynn/ui/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-class ProfileEditSuccess extends StatelessWidget {
-  const ProfileEditSuccess({Key? key}) : super(key: key);
+class TopUpSuccessPage extends StatelessWidget {
+  const TopUpSuccessPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class ProfileEditSuccess extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Nice Update!',
+            'Top Up\nWallet Berhasil',
             style: blackTextStyle.copyWith(
               fontSize: 20,
               fontWeight: semiBold,
@@ -24,7 +24,7 @@ class ProfileEditSuccess extends StatelessWidget {
             height: 26,
           ),
           Text(
-            'Your data is safe with\nour system',
+            'Use the money wisely and\ngrow your finance',
             style: greyTextStyle.copyWith(
               fontSize: 16,
             ),

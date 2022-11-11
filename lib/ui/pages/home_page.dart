@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: BottomAppBar(
         color: whiteColor,
         shape: CircularNotchedRectangle(),
@@ -85,7 +84,7 @@ class HomePage extends StatelessWidget {
           buildProfile(context),
           buildWalletCard(),
           buildLevel(),
-          buildServices(),
+          buildServices(context),
           buildLatestTrasaction(),
           buildSendAgain(),
           buildFriendlyTips(),
@@ -273,7 +272,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildServices() {
+  Widget buildServices(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
         top: 30,
@@ -297,7 +296,9 @@ class HomePage extends StatelessWidget {
               HomeServices(
                 iconUrl: 'assets/ic_topup.png',
                 title: 'Top Up',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/top-up');
+                },
               ),
               HomeServices(
                 iconUrl: 'assets/ic_send.png',
