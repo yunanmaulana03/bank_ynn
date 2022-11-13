@@ -95,11 +95,8 @@ class DataProviderPage extends StatelessWidget {
           ),
           CustomFilledButton(
             title: 'Continue',
-            onPressed: () async {
-              if (await Navigator.pushNamed(context, '/pin') == true) {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/data-success', (route) => false);
-              }
+            onPressed: () {
+              Navigator.pushNamed(context, '/data-package');
             },
           ),
           SizedBox(
