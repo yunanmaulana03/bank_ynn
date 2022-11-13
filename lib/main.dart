@@ -1,4 +1,7 @@
 import 'package:bank_ynn/shared/theme.dart';
+import 'package:bank_ynn/ui/pages/data_package_page.dart';
+import 'package:bank_ynn/ui/pages/data_provider_page.dart';
+import 'package:bank_ynn/ui/pages/data_success_page.dart';
 import 'package:bank_ynn/ui/pages/home_page.dart';
 import 'package:bank_ynn/ui/pages/onboarding_page.dart';
 import 'package:bank_ynn/ui/pages/pin_page.dart';
@@ -65,6 +68,9 @@ class MyApp extends StatelessWidget {
         '/transfer-page': (context) => TransferPage(),
         '/transfer-amount': (context) => TransferAmountPage(),
         '/transfer-success': (context) => TransferSuccessPage(),
+        '/data-provider': (context) => DataProviderPage(),
+        '/data-package': (context) => DataPackagePage(),
+        '/data-success': (context) => DataSuccessPage(),
       },
     );
   }

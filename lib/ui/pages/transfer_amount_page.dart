@@ -209,7 +209,6 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
                     context, '/transfer-success', (route) => false);
               }
             },
-            
           ),
           SizedBox(
             height: 25,
