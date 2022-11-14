@@ -19,7 +19,7 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
     super.initState();
 
     amountController.addListener(() {
-      final text = amountController.text;
+      final text = amountController.text == '' ? '0' : amountController.text;
 
       amountController.value = amountController.value.copyWith(
         text: NumberFormat.currency(
