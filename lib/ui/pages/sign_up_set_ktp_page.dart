@@ -1,3 +1,4 @@
+import 'package:bank_ynn/models/sign_up_form_model.dart';
 import 'package:bank_ynn/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 
@@ -5,12 +6,15 @@ import '../../shared/theme.dart';
 import '../widgets/button.dart';
 
 class SignUpSetKtpPage extends StatelessWidget {
-  const SignUpSetKtpPage({Key? key}) : super(key: key);
+  final SignUpFormModel data;
+  const SignUpSetKtpPage({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 24,
