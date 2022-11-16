@@ -3,7 +3,6 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:bank_ynn/models/sign_up_form_model.dart';
 import 'package:bank_ynn/models/user_model.dart';
@@ -45,7 +44,9 @@ class AuthService {
       if (res.statusCode == 200) {
         UserModel user = UserModel.fromJson(jsonDecode(res.body));
         user = user.copyWith(password: data.password);
+
         await storeCredentialToLocal(user);
+
         return user;
       } else {
         throw jsonDecode(res.body)['message'];
@@ -55,19 +56,19 @@ class AuthService {
     }
   }
 
-  Future<UserModel?> login(SignInFormModel data) async {
+  Future<UserModel> login(SignInFormModel data) async {
     try {
       final res = await http.post(
         Uri.parse('$baseUrl/login'),
         body: data.toJson(),
       );
 
-      print(res.body);
-
       if (res.statusCode == 200) {
         UserModel user = UserModel.fromJson(jsonDecode(res.body));
         user = user.copyWith(password: data.password);
+
         await storeCredentialToLocal(user);
+
         return user;
       } else {
         throw jsonDecode(res.body)['message'];
@@ -80,15 +81,15 @@ class AuthService {
   Future<void> storeCredentialToLocal(UserModel user) async {
     try {
       const storage = FlutterSecureStorage();
-      await storage.write(key: 'token', value: 'user.token');
-      await storage.write(key: 'email', value: 'user.email');
-      await storage.write(key: 'password', value: 'user.password');
+      await storage.write(key: 'token', value: user.token);
+      await storage.write(key: 'email', value: user.email);
+      await storage.write(key: 'password', value: user.password);
     } catch (e) {
       rethrow;
     }
   }
 
-  // Function untuk login
+  // mengambil data credential dari local
   Future<SignInFormModel> getCredentialFromLocal() async {
     try {
       const storage = FlutterSecureStorage();
@@ -109,6 +110,7 @@ class AuthService {
     }
   }
 
+  // ambil token
   Future<String> getToken() async {
     String token = '';
 
