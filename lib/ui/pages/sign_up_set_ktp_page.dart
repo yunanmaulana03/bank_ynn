@@ -137,7 +137,7 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
                       title: 'Continue',
                       onPressed: () {
                         if (validate()) {
-                          context.read()<AuthBloc>().add(
+                          context.read<AuthBloc>().add(
                                 AuthRegister(
                                   widget.data.copyWith(
                                     ktp: selectedImage == null
@@ -165,7 +165,7 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
               CustomTextButton(
                 title: 'Skip for Now',
                 onPressed: () {
-                  context.read()<AuthBloc>().add(
+                  context.read<AuthBloc>().add(
                         AuthRegister(
                           widget.data,
                         ),
