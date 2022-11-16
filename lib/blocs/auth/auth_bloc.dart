@@ -3,6 +3,7 @@ import 'package:bank_ynn/services/auth_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../models/sign_in_form_model.dart';
 import '../../models/user_model.dart';
 
 part 'auth_event.dart';
@@ -36,6 +37,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(AuthLoading());
 
           final user = await AuthService().register(event.data);
+
+          emit(AuthSuccess(user!));
+        } catch (e) {
+          emit(AuthFailed(e.toString()));
+        }
+      }
+
+      if (event is AuthLogin) {
+        try {
+          emit(AuthLoading());
+
+          final user = await AuthService().login(event.data);
 
           emit(AuthSuccess(user!));
         } catch (e) {
