@@ -4,9 +4,15 @@ import '../../shared/theme.dart';
 import '../widgets/button.dart';
 import '../widgets/forms.dart';
 
-class ProfileEditPage extends StatelessWidget {
+class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileEditPage> createState() => _ProfileEditPageState();
+}
+
+class _ProfileEditPageState extends State<ProfileEditPage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
