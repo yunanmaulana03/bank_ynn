@@ -20,6 +20,7 @@ class _PinPageState extends State<PinPage> {
   addPin(String number) {
     if (pinController.text.length < 6) {
       setState(() {
+        isError = false;
         pinController.text = pinController.text + number;
       });
     }
