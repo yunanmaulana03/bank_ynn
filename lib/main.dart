@@ -69,7 +69,6 @@ class MyApp extends StatelessWidget {
           '/profile-edit-pin': (context) => ProfileEditPinPage(),
           '/profile-edit-success': (context) => ProfileEditSuccess(),
           '/top-up': (context) => TopUpPage(),
-          '/top-up-amount': (context) => TopUpAmountPage(),
           '/top-up-success': (context) => TopUpSuccessPage(),
           '/transfer-page': (context) => TransferPage(),
           '/transfer-amount': (context) => TransferAmountPage(),
