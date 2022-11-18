@@ -56,3 +56,12 @@ class AuthUpdatePin extends AuthEvent {
 }
 
 class AuthLogout extends AuthEvent {}
+
+class AuthUpdateBalance extends AuthEvent {
+  final int amount;
+  const AuthUpdateBalance(this.amount);
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [amount];
+}
