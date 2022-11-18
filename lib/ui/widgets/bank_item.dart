@@ -1,16 +1,17 @@
+import 'package:bank_ynn/models/payment_method.dart';
 import 'package:bank_ynn/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class BankItem extends StatelessWidget {
-  final String imgUrl;
-  final String title;
+  final PaymentMethodModel? paymentMethod;
   final bool? isSelected;
+  final String? imgUrl;
 
   const BankItem({
     Key? key,
-    required this.imgUrl,
-    required this.title,
     this.isSelected = false,
+    this.paymentMethod,
+    this.imgUrl,
   }) : super(key: key);
 
   @override
@@ -32,14 +33,14 @@ class BankItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            imgUrl,
+            imgUrl!,
             height: 30,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                title,
+                paymentMethod!.name.toString(),
                 style: blackTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,
