@@ -1,19 +1,13 @@
+import 'package:bank_ynn/models/user_model.dart';
 import 'package:bank_ynn/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class TransferResultUserItem extends StatelessWidget {
-  final String imgUrl;
-  final String name;
-  final String username;
-  final bool isVerified;
+  final UserModel user;
   final bool isSelected;
+
   const TransferResultUserItem(
-      {Key? key,
-      required this.imgUrl,
-      required this.name,
-      required this.username,
-      this.isVerified = false,
-      this.isSelected = false})
+      {Key? key, required this.user, this.isSelected = false})
       : super(key: key);
 
   @override
@@ -41,13 +35,15 @@ class TransferResultUserItem extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(
-                  imgUrl,
-                ),
-                fit: BoxFit.cover,
+                image:
+                    user.profilePicture == null || user.profilePicture!.isEmpty
+                        ? AssetImage(
+                            'assets/img_profile.png',
+                          )
+                        : NetworkImage(user.profilePicture!) as ImageProvider,
               ),
             ),
-            child: isVerified
+            child: user.verified == 1
                 ? Align(
                     alignment: Alignment.topRight,
                     child: Container(
@@ -72,7 +68,8 @@ class TransferResultUserItem extends StatelessWidget {
             height: 13,
           ),
           Text(
-            name,
+            user.username.toString(),
+            overflow: TextOverflow.ellipsis,
             style: blackTextStyle.copyWith(
               fontSize: 16,
               fontWeight: medium,
@@ -82,7 +79,8 @@ class TransferResultUserItem extends StatelessWidget {
             height: 2,
           ),
           Text(
-            '@$username',
+            '@${user.username}',
+            overflow: TextOverflow.ellipsis,
             style: greyTextStyle.copyWith(
               fontSize: 12,
             ),

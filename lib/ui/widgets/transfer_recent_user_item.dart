@@ -1,18 +1,14 @@
 import 'package:bank_ynn/shared/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/user_model.dart';
+
 class TransferRecentUserItem extends StatelessWidget {
-  final String imgUrl;
-  final String name;
-  final String username;
-  final bool isVerified;
-  const TransferRecentUserItem(
-      {Key? key,
-      required this.imgUrl,
-      required this.name,
-      required this.username,
-      this.isVerified = false})
-      : super(key: key);
+  final UserModel user;
+  const TransferRecentUserItem({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +31,11 @@ class TransferRecentUserItem extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage(
-                imgUrl,
-              ),
+              image: user.profilePicture == null || user.profilePicture!.isEmpty
+                  ? AssetImage(
+                      'assets/img_profile.png',
+                    )
+                  : NetworkImage(user.profilePicture!) as ImageProvider,
             ),
           ),
         ),
@@ -45,7 +43,8 @@ class TransferRecentUserItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              name,
+              user.name.toString(),
+              overflow: TextOverflow.ellipsis,
               style: blackTextStyle.copyWith(
                 fontSize: 16,
                 fontWeight: medium,
@@ -55,7 +54,8 @@ class TransferRecentUserItem extends StatelessWidget {
               height: 2,
             ),
             Text(
-              '@$username',
+              '@${user.username}',
+              overflow: TextOverflow.ellipsis,
               style: greyTextStyle.copyWith(
                 fontSize: 12,
               ),
@@ -63,7 +63,7 @@ class TransferRecentUserItem extends StatelessWidget {
           ],
         ),
         Spacer(),
-        if (isVerified)
+        if (user.verified == 1)
           Row(
             children: [
               Icon(

@@ -25,7 +25,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         try {
           emit(UserLoading());
 
-          final users = await UserService().getRecentUser();
+          final users = await UserService().getRecentUsers();
 
           emit(UserSuccess(users));
         } catch (e) {

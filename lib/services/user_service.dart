@@ -29,13 +29,13 @@ class UserService {
     }
   }
 
-  Future<List<UserModel>> getRecentUser() async {
+  Future<List<UserModel>> getRecentUsers() async {
     try {
       final token = await AuthService().getToken();
 
       final res = await http.get(
         Uri.parse(
-          '$baseUrl/users/transfer_histories',
+          '$baseUrl/transfer_histories',
         ),
         headers: {
           'Authorization': token,
@@ -61,7 +61,7 @@ class UserService {
 
       final res = await http.get(
         Uri.parse(
-          '$baseUrl/users/username',
+          '$baseUrl/users/$username',
         ),
         headers: {
           'Authorization': token,
