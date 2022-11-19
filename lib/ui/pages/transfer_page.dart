@@ -1,6 +1,8 @@
 import 'package:bank_ynn/blocs/user/user_bloc.dart';
+import 'package:bank_ynn/models/transfer_form_model.dart';
 import 'package:bank_ynn/models/user_model.dart';
 import 'package:bank_ynn/shared/theme.dart';
+import 'package:bank_ynn/ui/pages/transfer_amount_page.dart';
 import 'package:bank_ynn/ui/widgets/button.dart';
 import 'package:bank_ynn/ui/widgets/forms.dart';
 import 'package:bank_ynn/ui/widgets/transfer_recent_user_item.dart';
@@ -82,7 +84,13 @@ class _TransferPageState extends State<TransferPage> {
               child: CustomFilledButton(
                 title: 'Continue',
                 onPressed: () {
-                  Navigator.pushNamed(context, '/transfer-amount');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TransferAmountPage(
+                                  data: TransferFormModel(
+                                sendTo: selectedUser!.username,
+                              ))));
                 },
               ),
             )
@@ -114,7 +122,19 @@ class _TransferPageState extends State<TransferPage> {
               if (state is UserSuccess) {
                 return Column(
                   children: state.users.map((user) {
-                    return TransferRecentUserItem(user: user);
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TransferAmountPage(
+                                  data: TransferFormModel(
+                                sendTo: user.username,
+                              )),
+                            ),
+                          );
+                        },
+                        child: TransferRecentUserItem(user: user));
                   }).toList(),
                 );
               }

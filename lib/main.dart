@@ -76,7 +76,6 @@ class MyApp extends StatelessWidget {
           '/top-up': (context) => TopUpPage(),
           '/top-up-success': (context) => TopUpSuccessPage(),
           '/transfer-page': (context) => TransferPage(),
-          '/transfer-amount': (context) => TransferAmountPage(),
           '/transfer-success': (context) => TransferSuccessPage(),
           '/data-provider': (context) => DataProviderPage(),
           '/data-package': (context) => DataPackagePage(),

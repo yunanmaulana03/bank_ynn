@@ -108,7 +108,7 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                   height: 16,
                 ),
                 Text(
-                  'Yunan Maulana',
+                  'Upload Your Profile Picture',
                   style: blackTextStyle.copyWith(
                     fontSize: 18,
                     fontWeight: medium,
