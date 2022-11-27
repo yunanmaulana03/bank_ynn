@@ -1,5 +1,6 @@
 import 'package:bank_ynn/blocs/transaction/transaction_bloc.dart';
 import 'package:bank_ynn/shared/shared_method.dart';
+import 'package:bank_ynn/ui/pages/transfer_amount_page.dart';
 import 'package:bank_ynn/ui/widgets/home_latest_transaction_item.dart';
 import 'package:bank_ynn/ui/widgets/home_services.dart';
 import 'package:bank_ynn/ui/widgets/home_tips_item.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
+import '../../blocs/user/user_bloc.dart';
+import '../../models/transfer_form_model.dart';
 import '../../shared/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -418,27 +421,37 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 14,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                HomeUseritem(
-                  imgUrl: 'assets/img_friends1.png',
-                  username: 'yuanita',
-                ),
-                HomeUseritem(
-                  imgUrl: 'assets/img_friends2.png',
-                  username: 'yani',
-                ),
-                HomeUseritem(
-                  imgUrl: 'assets/img_friends3.png',
-                  username: 'urip',
-                ),
-                HomeUseritem(
-                  imgUrl: 'assets/img_friends4.png',
-                  username: 'masa',
-                ),
-              ],
+          BlocProvider(
+            create: (context) => UserBloc()..add(UserGetRecent()),
+            child: BlocBuilder<UserBloc, UserState>(
+              builder: (context, state) {
+                print(state);
+                if (state is UserSuccess) {
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: state.users.map((user) {
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TransferAmountPage(
+                                      data: TransferFormModel(
+                                    sendTo: user.username,
+                                  )),
+                                ),
+                              );
+                            },
+                            child: HomeUseritem(user: user));
+                      }).toList(),
+                    ),
+                  );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           )
         ],
