@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bank_ynn/models/data_plan_model.dart';
 import 'package:bank_ynn/models/top_up_model.dart';
+import 'package:bank_ynn/models/transaction_model.dart';
 import 'package:bank_ynn/services/auth_service.dart';
 import 'package:bank_ynn/shared/shared_value.dart';
 import 'package:http/http.dart' as http;
@@ -73,6 +74,27 @@ class TranscationService {
       if (res.statusCode != 200) {
         throw jsonDecode(res.body)['message'];
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<TransactionModel>> getTransactions() async {
+    try {
+      final token = await AuthService().getToken();
+
+      final res = await http.get(Uri.parse('$baseUrl/transactions'), headers: {
+        'Authorization': token,
+      });
+      if (res.statusCode == 200) {
+        return List<TransactionModel>.from(
+          jsonDecode(res.body)['data'].map(
+            (transaction) => TransactionModel.fromJson(transaction),
+          ),
+        ).toList();
+      }
+
+      throw jsonDecode(res.body)['message'];
     } catch (e) {
       rethrow;
     }

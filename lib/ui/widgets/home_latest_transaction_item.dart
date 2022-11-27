@@ -1,18 +1,15 @@
+import 'package:bank_ynn/models/transaction_model.dart';
+import 'package:bank_ynn/shared/shared_method.dart';
 import 'package:bank_ynn/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomeLatestTransactionItem extends StatelessWidget {
-  final String iconUrl;
-  final String title;
-  final String time;
-  final String value;
-  const HomeLatestTransactionItem(
-      {Key? key,
-      required this.iconUrl,
-      required this.title,
-      required this.time,
-      required this.value})
-      : super(key: key);
+  final TransactionModel transaction;
+  const HomeLatestTransactionItem({
+    Key? key,
+    required this.transaction,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +19,10 @@ class HomeLatestTransactionItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset(
-            iconUrl,
-            width: 48,
-          ),
+          // Image.network(
+          //   transaction.transactionType!.thumbnail!,
+          //   width: 48,
+          // ),
           SizedBox(
             width: 16,
           ),
@@ -34,7 +31,7 @@ class HomeLatestTransactionItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  transaction.transactionType!.name.toString(),
                   style: blackTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: medium,
@@ -44,7 +41,8 @@ class HomeLatestTransactionItem extends StatelessWidget {
                   height: 2,
                 ),
                 Text(
-                  time,
+                  DateFormat('MMM dd')
+                      .format(transaction.createdAt ?? DateTime.now()),
                   style: greyTextStyle.copyWith(
                     fontSize: 12,
                   ),
@@ -53,7 +51,9 @@ class HomeLatestTransactionItem extends StatelessWidget {
             ),
           ),
           Text(
-            value,
+            formatCurrency(transaction.amount ?? 0,
+                symbol:
+                    transaction.transactionType!.action == 'cr' ? '+ ' : '-'),
             style: blackTextStyle.copyWith(
               fontSize: 16,
               fontWeight: medium,
