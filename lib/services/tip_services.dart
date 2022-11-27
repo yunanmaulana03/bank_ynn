@@ -11,12 +11,15 @@ class TipService {
     try {
       final token = await AuthService().getToken();
       final res = await http.get(
-        Uri.parse('$baseUrl/tips'),
+        Uri.parse(
+          '$baseUrl/tips',
+        ),
         headers: {
           'Authorization': token,
         },
       );
       if (res.statusCode == 200) {
+        // print(res.statusCode);
         return List<TipModel>.from(
           jsonDecode(res.body)['data'].map(
             (tip) => TipModel.fromJson(tip),

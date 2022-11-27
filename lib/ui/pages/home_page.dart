@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
+import '../../blocs/tip/tip_bloc.dart';
 import '../../blocs/user/user_bloc.dart';
 import '../../models/transfer_form_model.dart';
 import '../../shared/theme.dart';
@@ -425,7 +426,6 @@ class HomePage extends StatelessWidget {
             create: (context) => UserBloc()..add(UserGetRecent()),
             child: BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
-                print(state);
                 if (state is UserSuccess) {
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -478,31 +478,25 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 14,
           ),
-          Wrap(
-            spacing: 30,
-            runSpacing: 20,
-            children: [
-              HomeTipsItem(
-                imgUrl: 'assets/img_tips1.png',
-                title: 'Best tips for using a credit card',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imgUrl: 'assets/img_tips2.png',
-                title: 'Spot the good pie of finance model',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imgUrl: 'assets/img_tips3.png',
-                title: 'Great hack to get better advices',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imgUrl: 'assets/img_tips4.png',
-                title: 'Save more penny buy this instead',
-                url: 'https://www.google.com',
-              ),
-            ],
+          BlocProvider(
+            create: (context) => TipBloc()..add(TipGet()),
+            child: BlocBuilder<TipBloc, TipState>(
+              builder: (context, state) {
+                // print(state);
+                if (state is TipSuccess) {
+                  return Wrap(
+                    spacing: 30,
+                    runSpacing: 20,
+                    children: state.tips.map((tip) {
+                      return HomeTipsItem(tip: tip);
+                    }).toList(),
+                  );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
           ),
         ],
       ),
